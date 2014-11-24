@@ -29,8 +29,8 @@ package projecteuler.problems;
 public class Problem8 {
 
     /**
-     * I wanted to use dynamic programming but my idea for memoisation wouldn't work for such a large input.
-     * Might come up with a better solution another time.
+     * Avoids recalculation by dividing by the number falling off and multiplying by the number next in line.
+     * Avoids any calculations containing a zero to prevent wasted calculations.
      *
      * @param input          input string
      * @param adjacentDigits amount of adjacent digits to multiply

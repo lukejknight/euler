@@ -1,5 +1,7 @@
 package projecteuler.problems;
 
+import java.util.Vector;
+
 /**
  * @author Luke Knight
  */
@@ -16,7 +18,7 @@ package projecteuler.problems;
 
 public class Problem2 {
 
-	public static int fibonacci(int a, int b) {
+	public static int fibonacciRecursive(int a, int b) {
 		// add first two numbers
 		int c = b + a;
 		// if a value exceeds four million, stop.
@@ -25,16 +27,34 @@ public class Problem2 {
 		}
 		if (b % 2 == 0) {
 			// add even number
-			return b + fibonacci(b, c);
+			return b + fibonacciRecursive(b, c);
 		} else {
 			// discard odd number
-			return 0 + fibonacci(b, c);
+			return fibonacciRecursive(b, c);
 		}
 	}
 
+    public static int fibonacciDynamic(int limit) {
+        Vector<Integer> values = new Vector<Integer>();
+        values.add(1);
+        values.add(2);
+        int sum = 2;
+        for (int i = 2; sum < limit; i++) {
+            int tempSum = values.get(i-1) + values.get(i-2);
+            values.insertElementAt(tempSum, i);
+            if (tempSum % 2 == 0) {
+                sum = sum + tempSum;
+            }
+        }
+        return sum;
+    }
+
+
+
 	public static void main(String[] args) {
 
-		System.out.println(fibonacci(1, 2));
+		System.out.println(fibonacciRecursive(1, 2));
+        System.out.println(fibonacciDynamic(4000000));
 
 	}
 

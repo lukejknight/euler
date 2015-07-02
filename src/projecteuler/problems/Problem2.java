@@ -34,6 +34,11 @@ public class Problem2 {
 		}
 	}
 
+    /**
+     * Memoisation of previous calculations for efficient future calculations.
+     * @param limit fibonacci value does not exceed this.
+     * @return sum of fibonacci values up to 'limit'.
+     */
     public static int fibonacciDynamic(int limit) {
         Vector<Integer> values = new Vector<Integer>();
         values.add(1);
